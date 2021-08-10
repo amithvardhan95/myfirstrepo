@@ -1,0 +1,59 @@
+String h;int i,j,T;String y;int ctr=0;int ct=0;
+		int inte[];
+		h="";int maxi=0;
+		y=h;int timeofmax=0;
+		String xy="";String zz[];String hh[];
+		int N=0;int K=0;String tt="";
+		
+		T=Integer.valueOf(br.readLine());
+		inte=new int[T];
+		
+		for(j=0;j<T;j++)
+		{
+			xy=br.readLine();
+			zz=xy.split(" ");
+			N=Integer.valueOf(zz[0]);
+			K=Integer.valueOf(zz[1]);
+			xy=br.readLine();
+			h=xy;
+			int b[]=new int[h.length()];
+			
+			y=h;
+			hh=new String[h.length()];
+			for(i=0;i<h.length();i++)
+			{
+				y=rotate(y);
+				hh[i]=y;
+				b[i]=bintodec(y);	
+				
+			}
+			for(i=0;i<h.length();i++)
+			{
+				maxi=Math.max(maxi,b[i]);
+			}
+			for(i=h.length()-1;i>=0;i--)
+			{
+				if(maxi==b[i])
+				{timeofmax=i+1;
+			      tt=hh[i];}
+			}
+			
+			ctr=0;
+			for(i=0;i<h.length();i++)
+			{
+				if(tt.equals(hh[i]))
+				{
+					ct++;
+					if(K==ct)
+					{ctr++;break;}
+				}
+				ctr++;
+				if(i==(h.length()-1))
+				{i=-1;}
+			}
+			inte[j]=ctr;
+		}
+		for(j=0;j<T;j++)
+		{
+			System.out.println(inte[j]);
+		}
